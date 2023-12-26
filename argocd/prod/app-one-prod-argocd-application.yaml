@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-one-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/OkkarMin/cluster-manifests-repo"
+    targetRevision: HEAD
+    path: kubernetes-basic-yaml/prod/app-one
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

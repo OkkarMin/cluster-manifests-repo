@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-two-stg-web-server
+  namespace: stg
+  labels:
+    app: app-two-stg-web-server
+spec:
+  selector:
+    matchLabels:
+      app: app-two-stg-web-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-two-stg-web-server
+    spec:
+      containers:
+        - name: app-two-stg-web-server
+          image: public.ecr.aws/t2q1c3h9/app-two:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENVIRONMENT
+              value: stg
+            - name: APPNAME
+              value: app-two
+          ports:
+            - containerPort: 80
+      restartPolicy: Always

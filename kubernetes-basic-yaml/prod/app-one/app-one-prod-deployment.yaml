@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-one-prod-web-server
+  namespace: prod
+  labels:
+    app: app-one-prod-web-server
+spec:
+  selector:
+    matchLabels:
+      app: app-one-prod-web-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-one-prod-web-server
+    spec:
+      containers:
+        - name: app-one-prod-web-server
+          image: public.ecr.aws/t2q1c3h9/app-one:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENVIRONMENT
+              value: prod
+            - name: APPNAME
+              value: app-one
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
