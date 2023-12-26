@@ -6,8 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    #TODO: change repoURL
-    repoURL: "https://git.example.com/repo.git"
+    repoURL: "https://github.com/OkkarMin/cluster-manifests-repo"
     targetRevision: HEAD
     path: kubernetes-basic-yaml/stg/app-one
   destination:
@@ -17,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

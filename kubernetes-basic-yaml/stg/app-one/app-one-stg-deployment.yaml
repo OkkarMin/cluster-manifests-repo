@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-one-stg-web-server
-  namespace: default
+  namespace: stg
   labels:
     app: app-one-stg-web-server
 spec:
@@ -17,8 +17,7 @@ spec:
     spec:
       containers:
         - name: app-one-stg-web-server
-          #TODO: change the image url
-          image: docker.io/library/env-var-webpage:latest
+          image: public.ecr.aws/t2q1c3h9/app-one:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: ENVIRONMENT
