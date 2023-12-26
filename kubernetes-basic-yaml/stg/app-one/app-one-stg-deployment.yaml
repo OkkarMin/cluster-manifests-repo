@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-one-stg-web-server
+  namespace: default
+  labels:
+    app: app-one-stg-web-server
+spec:
+  selector:
+    matchLabels:
+      app: app-one-stg-web-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-one-stg-web-server
+    spec:
+      containers:
+        - name: app-one-stg-web-server
+          #TODO: change the image url
+          image: docker.io/library/env-var-webpage:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENVIRONMENT
+              value: stg
+            - name: APPNAME
+              value: app-one-stg-web-server
+          ports:
+            - containerPort: 80
+      restartPolicy: Always

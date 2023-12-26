@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-one-stg
+  namespace: argocd
+spec:
+  project: default
+  source:
+    #TODO: change repoURL
+    repoURL: "https://git.example.com/repo.git"
+    targetRevision: HEAD
+    path: kubernetes-basic-yaml/stg/app-one
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: stg
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
