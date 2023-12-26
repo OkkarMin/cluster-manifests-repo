@@ -23,7 +23,7 @@ spec:
             - name: ENVIRONMENT
               value: stg
             - name: APPNAME
-              value: app-one-stg-web-server
+              value: app-one
           ports:
             - containerPort: 80
       restartPolicy: Always
