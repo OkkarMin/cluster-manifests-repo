@@ -23,7 +23,7 @@ spec:
             - name: ENVIRONMENT
               value: stg
             - name: APPNAME
-              value: app-one
+              value: demo-app-for-teleport
           ports:
             - containerPort: 80
       restartPolicy: Always
