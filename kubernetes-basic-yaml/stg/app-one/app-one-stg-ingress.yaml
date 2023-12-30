@@ -4,13 +4,15 @@ kind: Ingress
 metadata:
   name: app-one-stg-ingress
   namespace: stg
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
     - host: app-one.okkarmin.com
       http:
         paths:
-          - path: /stg
+          - path: /stg(/|$)(.*)
             pathType: Prefix
             backend:
               service:
