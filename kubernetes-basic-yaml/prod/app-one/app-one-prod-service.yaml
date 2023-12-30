@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-one-stg-service
-  namespace: stg
+  name: app-one-prod-service
+  namespace: prod
 spec:
   selector:
-    app: app-one-stg-web-server
+    app: app-one-prod-web-server
   ports:
     - protocol: TCP
       port: 9090
