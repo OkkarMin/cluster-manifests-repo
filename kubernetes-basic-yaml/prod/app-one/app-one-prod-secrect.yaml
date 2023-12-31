@@ -18,4 +18,4 @@ spec:
         secretsPath: "/"
   managedSecretReference:
     secretName: infisical-secret-app-one-prod # <-- the name of kubernetes secret that will be created
-    secretNamespace: infisical # <-- where the kubernetes secret should be created
+    secretNamespace: prod # <-- where the kubernetes secret should be created
