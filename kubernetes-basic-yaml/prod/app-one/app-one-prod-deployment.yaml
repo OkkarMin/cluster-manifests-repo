@@ -5,6 +5,8 @@ metadata:
   namespace: prod
   labels:
     app: app-one-prod-web-server
+  annotations: 
+    secrets.infisical.com/auto-reload: "true" # <- redeployment annotation
 spec:
   selector:
     matchLabels:
