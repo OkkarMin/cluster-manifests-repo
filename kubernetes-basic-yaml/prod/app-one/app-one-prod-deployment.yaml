@@ -19,11 +19,9 @@ spec:
         - name: app-one-prod-web-server
           image: public.ecr.aws/t2q1c3h9/app-one:latest
           imagePullPolicy: Always
-          env:
-            - name: ENVIRONMENT
-              value: prod
-            - name: APPNAME
-              value: app-one
+          envFrom:
+            - secretRef:
+                name: infisical-secrect-app-one-prod
           ports:
             - containerPort: 80
       restartPolicy: Always
