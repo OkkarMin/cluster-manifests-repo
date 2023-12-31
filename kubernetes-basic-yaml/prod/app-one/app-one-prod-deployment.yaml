@@ -21,7 +21,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: infisical-secrect-app-one-prod
+                name: infisical-secret-app-one-prod
           ports:
             - containerPort: 80
       restartPolicy: Always
