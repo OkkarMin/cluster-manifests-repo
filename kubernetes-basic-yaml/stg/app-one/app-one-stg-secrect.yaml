@@ -14,7 +14,7 @@ spec:
         secretName: infisical-service-token
         secretNamespace: infisical
       secretsScope:
-        envSlug: staging
+        envSlug: stg
         secretsPath: "/"
   managedSecretReference:
     secretName: infisical-secret-app-one-stg # <-- the name of kubernetes secret that will be created
