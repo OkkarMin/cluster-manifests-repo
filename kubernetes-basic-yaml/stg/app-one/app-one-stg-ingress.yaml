@@ -6,8 +6,13 @@ metadata:
   namespace: stg
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/issuer: "letsencrypt-staging"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - app-one.okkarmin.com
+      secretName: stg-tls
   rules:
     - host: app-one.okkarmin.com
       http:
