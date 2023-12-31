@@ -1,0 +1,21 @@
+apiVersion: secrets.infisical.com/v1alpha1
+kind: InfisicalSecret
+metadata:
+  # Name of of this InfisicalSecret resource
+  name: infisical-secret-app-one-stg
+  namespace: stg
+spec:
+  # The host that should be used to pull secrets from. If left empty, the value specified in Global configuration will be used
+  hostAPI: http://infisical-1704011280-backend.infisical.svc.cluster.local:9090/api
+  resyncInterval: 10
+  authentication:
+    serviceToken:
+      serviceTokenSecretReference:
+        secretName: infisical-service-token
+        secretNamespace: infisical
+      secretsScope:
+        envSlug: stg
+        secretsPath: "/"
+  managedSecretReference:
+    secretName: infisical-secret-app-one-stg # <-- the name of kubernetes secret that will be created
+    secretNamespace: stg # <-- where the kubernetes secret should be created

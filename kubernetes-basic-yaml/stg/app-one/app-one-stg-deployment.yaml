@@ -5,6 +5,8 @@ metadata:
   namespace: stg
   labels:
     app: app-one-stg-web-server
+  annotations: 
+    secrets.infisical.com/auto-reload: "true" # <- redeployment annotation
 spec:
   selector:
     matchLabels:
@@ -19,11 +21,9 @@ spec:
         - name: app-one-stg-web-server
           image: public.ecr.aws/t2q1c3h9/app-one:latest
           imagePullPolicy: Always
-          env:
-            - name: ENVIRONMENT
-              value: stg
-            - name: APPNAME
-              value: demo-app-for-teleport
+          envFrom:
+            - secretRef:
+                name: infisical-secret-app-one-stg
           ports:
             - containerPort: 80
       restartPolicy: Always
